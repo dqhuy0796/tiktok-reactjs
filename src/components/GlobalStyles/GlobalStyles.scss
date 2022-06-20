@@ -1,11 +1,17 @@
 @import 'normalize.css';
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+// @import url('src/assets/font-awesome/css/fontawesome.min.css');
+@import url('src/assets/themify-icons/themify-icons.css');
 
 :root {
     --primary-color: #ff9999;
+    --border-color: #cecece;
+    --bg-light-color: #f1f1f1;
 }
 
 * {
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
 }
 

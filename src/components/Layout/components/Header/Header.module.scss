@@ -1,0 +1,14 @@
+// @forward '/src/components/GlobalStyles/GlobalStyles.scss';
+
+.wrapper {
+    width: 100%;
+    height: 64px;
+    box-shadow: 0 1px 1px var(--border-color);
+    .inner {
+        height: 100%;
+        width: 100%;
+        max-width: 1150px;
+        background-color: var(--bg-light-color);
+        margin: 0 auto;
+    }
+}
