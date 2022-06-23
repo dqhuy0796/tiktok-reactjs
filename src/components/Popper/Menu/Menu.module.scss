@@ -1,0 +1,27 @@
+.menu-container {
+    width: 224px;
+    background-color: var(--whiteColor);
+    box-shadow: 0 2px 8px 1px var(--borderColor);
+    border-radius: 4px;
+}
+.menu-list {
+    padding: 8px 0;
+    width: 100%;
+    list-style: none;
+}
+.menu-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 16px;
+    width: 100%;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--blackColor);
+    &:hover {
+        cursor: pointer;
+        background-color: var(--bg-lightColor);
+    }
+}
+.content {
+    margin-left: 8px;
+}

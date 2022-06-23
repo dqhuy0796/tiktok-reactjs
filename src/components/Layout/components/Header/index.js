@@ -1,9 +1,35 @@
+import { useState } from 'react';
 import classNames from 'classnames/bind';
 import styles from './Header.module.scss';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCircleXmark, faPlus } from '@fortawesome/free-solid-svg-icons';
+import { faCircleNotch, faEllipsisVertical, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+import { faGlobe, faKeyboard, faQuestionCircle } from '@fortawesome/free-solid-svg-icons';
+
+import MyButton from '../../../MyButton';
+import Menu from '../../../Popper/Menu';
+import Suggestion from '../../../Popper/Suggestion';
 
 const cx = classNames.bind(styles);
 
+const MENU_ITEMS = [
+    {
+        icon: <FontAwesomeIcon icon={faGlobe} />,
+        content: 'Tiếng Việt',
+    },
+    {
+        icon: <FontAwesomeIcon icon={faQuestionCircle} />,
+        content: 'Phản hồi và trợ giúp',
+        to: './upload',
+    },
+    {
+        icon: <FontAwesomeIcon icon={faKeyboard} />,
+        content: 'Phím tắt bàn phím',
+    },
+];
+
 function Header() {
+    const [searchResult, setSearchResult] = useState('');
     return (
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
@@ -46,10 +72,7 @@ function Header() {
                                 d="M69.0317 13.1787H84.1514L82.7972 17.411H78.6261V33.0548H73.8417V17.411L69.0381 17.4173L69.0317 13.1787Z"
                                 fill="black"
                             ></path>
-                            <path
-                                d="M45.7295 19.5015H50.4628V33.0548H45.755L45.7295 19.5015Z"
-                                fill="black"
-                            ></path>
+                            <path d="M45.7295 19.5015H50.4628V33.0548H45.755L45.7295 19.5015Z" fill="black"></path>
                             <path
                                 d="M52.347 13.1277H57.0802V22.3848L61.7688 17.7754H67.4155L61.4814 23.5356L68.1246 33.0548H62.9122L58.4791 26.4572L57.0739 27.8189V33.0548H52.3406V13.1277H52.347Z"
                                 fill="black"
@@ -77,14 +100,49 @@ function Header() {
                         </g>
                         <defs>
                             <clipPath id="clip0">
-                                <rect
-                                    width="118"
-                                    height="42"
-                                    fill="white"
-                                ></rect>
+                                <rect width="118" height="42" fill="white"></rect>
                             </clipPath>
                         </defs>
                     </svg>
+                </div>
+
+                <Suggestion keyword={searchResult}>
+                    <div className={cx('search')}>
+                        <input
+                            type="text"
+                            value={searchResult}
+                            onChange={(e) => setSearchResult(e.target.value)}
+                            className={cx('search-box')}
+                            spellCheck={false}
+                            placeholder="tìm kiếm tài khoản và video"
+                        />
+                        <div className={cx('clear')}>
+                            <FontAwesomeIcon icon={faCircleXmark} />
+                        </div>
+                        <div className={cx('loading')}>
+                            <FontAwesomeIcon icon={faCircleNotch} />
+                        </div>
+                        <button className={cx('search-btn')}>
+                            <FontAwesomeIcon icon={faMagnifyingGlass} />
+                        </button>
+                    </div>
+                </Suggestion>
+
+                <div className={cx('action')}>
+                    <MyButton to="./upload">
+                        <FontAwesomeIcon icon={faPlus} />
+                        <span>Tải lên</span>
+                    </MyButton>
+
+                    <MyButton primary to="./login">
+                        <span>Đăng nhập</span>
+                    </MyButton>
+
+                    <Menu items={MENU_ITEMS}>
+                        <div className={cx('option')}>
+                            <FontAwesomeIcon icon={faEllipsisVertical} />
+                        </div>
+                    </Menu>
                 </div>
             </div>
         </header>

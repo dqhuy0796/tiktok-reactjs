@@ -1,0 +1,38 @@
+.wrapper {
+    display: flex;
+    align-items: center;
+    padding: 9px 16px;
+    width: 100%;
+    background-color: var(--whiteColor);
+
+    &:hover {
+        cursor: pointer;
+        background-color: var(--bg-lightColor);
+    }
+}
+.avatar {
+    width: 40px;
+    height: 40px;
+    background-color: var(--bg-lightColor);
+    object-fit: cover;
+    border-radius: 50%;
+    border: 1px solid var(--borderColor);
+}
+.info {
+    margin-left: 16px;
+}
+.name {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--blackColor);
+}
+.check {
+    margin-left: 4px;
+    font-size: 1.3rem;
+    color: #20d5ec;
+}
+.desc {
+    font-size: 1.3rem;
+    font-weight: 400;
+    color: var(--textColor);
+}

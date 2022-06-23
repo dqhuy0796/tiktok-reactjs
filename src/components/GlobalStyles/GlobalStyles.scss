@@ -1,12 +1,18 @@
 @import 'normalize.css';
 @import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
 // @import url('src/assets/font-awesome/css/fontawesome.min.css');
-@import url('src/assets/themify-icons/themify-icons.css');
+// @import url('src/assets/themify-icons/themify-icons.css');
 
 :root {
-    --primary-color: #ff9999;
-    --border-color: #cecece;
-    --bg-light-color: #f1f1f1;
+    --primaryColor: #fe2c55;
+    --secondaryColor: #000;
+    --borderColor: #cecece;
+    --textColor: #191919;
+    --textSecondaryColor: #757575;
+    --bg-lightColor: #f1f1f1;
+    --bg-darkColor: #393939;
+    --whiteColor: #fff;
+    --blackColor: #292929;
 }
 
 * {
@@ -24,4 +30,28 @@ body {
     font-size: 1.6rem;
     line-height: 1.5;
     text-rendering: optimizeSpeed;
+}
+
+::placeholder {
+    font-size: 1.6rem;
+    font-weight: 400;
+    font-family: 'Quicksand', sans-serif;
+    color: var(--textSecondaryColor);
+}
+::-moz-placeholder {
+    font-size: 1.6rem;
+    font-weight: 400;
+    font-family: 'Quicksand', sans-serif;
+    color: var(--textSecondaryColor);
+}
+::-webkit-input-placeholder {
+    font-size: 1.6rem;
+    font-weight: 400;
+    font-family: 'Quicksand', sans-serif;
+    color: var(--textSecondaryColor);
+}
+
+a[href] {
+    text-decoration: none;
+    color: var(--textColor);
 }
