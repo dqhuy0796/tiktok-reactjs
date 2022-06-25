@@ -1,6 +1,7 @@
 import styles from './Menu.module.scss';
 import classNames from 'classnames/bind';
 import Tippy from '@tippyjs/react/headless';
+import Submenu from '../Submenu';
 
 const cx = classNames.bind(styles);
 
@@ -12,6 +13,7 @@ function Menu({ children, items = [] }) {
             placement="bottom-end"
             render={(attrs) => (
                 <div className={cx('menu-container')} tabIndex="-1" {...attrs}>
+                    <Submenu title={'Ngôn ngữ'} />
                     <ul className={cx('menu-list')}>
                         {items.map((item, index) => (
                             <li key={index} className={cx('menu-item')}>

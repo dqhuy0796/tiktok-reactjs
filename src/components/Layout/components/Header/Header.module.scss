@@ -1,5 +1,3 @@
-// @forward '/src/components/GlobalStyles/GlobalStyles.scss';
-
 .wrapper {
     width: 100%;
     height: 60px;
@@ -16,79 +14,7 @@
     background-color: var(--whiteColor);
     margin: 0 auto;
 }
-.search {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    position: relative;
-    height: 46px;
-    font-size: 1.6rem;
-    font-weight: 400;
-
-    &::after {
-        content: '';
-        position: absolute;
-        top: 9px;
-        bottom: 9px;
-        right: 52px;
-        width: 1px;
-        background-color: var(--borderColor);
-    }
-}
-// .search,
-.search-result {
-    width: 360px;
-}
-.search-box {
-    padding: 12px 16px;
-    min-width: 309px;
-    height: 100%;
-    font-size: 1.6rem;
-    font-weight: 400;
-    color: var(--textColor);
-    background-color: var(--bg-lightColor);
-    border-bottom-left-radius: 46px;
-    border-top-left-radius: 46px;
-    border: 1px solid transparent;
-    outline: none;
-    &:focus {
-        border-color: var(--borderColor) transparent var(--borderColor) var(--borderColor);
-    }
-    &:focus ~ .search-btn {
-        border-color: var(--borderColor) var(--borderColor) var(--borderColor) transparent;
-    }
-}
-.search-btn {
-    font-size: 2rem;
-    width: 52px;
-    height: 100%;
-    color: var(--textSecondaryColor);
-    background-color: var(--bg-lightColor);
-    border-bottom-right-radius: 46px;
-    border-top-right-radius: 46px;
-    border: 1px solid transparent;
-    outline: none;
-
-    &:hover {
-        background-color: #eaeaeb;
-    }
-}
-
-.clear,
-.loading {
-    position: absolute;
-    right: 60px;
-    font-size: 1.6rem;
-    color: var(--textSecondaryColor);
-}
-.clear {
-    display: none;
-}
-.loading {
-    animation: rotating linear 1s infinite;
-    transition: ease-in-out 0.3s;
-}
-
+// Action
 .action {
     display: flex;
     align-items: center;
@@ -100,14 +26,4 @@
     font-size: 2rem;
     font-weight: 700;
     color: var(--textColor);
-}
-
-// Animation
-@keyframes rotating {
-    from {
-        transform: rotate(0);
-    }
-    to {
-        transform: rotate(360deg);
-    }
 }

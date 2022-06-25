@@ -1,0 +1,35 @@
+.container {
+    position: relative;
+    width: 100%;
+    background-color: var(--whiteColor);
+}
+.go-back {
+    position: absolute;
+    left: 0;
+    height: 100%;
+}
+.title {
+    width: 100%;
+    text-align: center;
+}
+.list {
+    padding: 8px 0;
+    width: 100%;
+    list-style: none;
+}
+.item {
+    display: flex;
+    align-items: center;
+    padding: 10px 16px;
+    width: 100%;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--blackColor);
+    &:hover {
+        cursor: pointer;
+        background-color: var(--bg-lightColor);
+    }
+}
+.content {
+    margin-left: 8px;
+}
