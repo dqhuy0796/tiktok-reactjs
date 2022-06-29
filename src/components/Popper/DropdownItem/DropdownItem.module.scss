@@ -1,0 +1,13 @@
+.item {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 46px;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--blackColor);
+    &:hover {
+        cursor: pointer;
+        background-color: var(--bg-lightColor);
+    }
+}

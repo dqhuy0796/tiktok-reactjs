@@ -1,26 +1,23 @@
 import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import classNames from 'classnames/bind';
+import { Link } from 'react-router-dom';
 import styles from './UserLink.module.scss';
 
 const cx = classNames.bind(styles);
 
-function UserLink({ children }) {
+function UserLink({ props }) {
     return (
-        <div className={cx('wrapper')}>
-            <img
-                className={cx('avatar')}
-                src="https://vnn-imgs-f.vgcloud.vn/2022/03/18/12/lisa-blackpink-vuong-vao-vu-dieu-tra-pham-luat-o-thai-lan.jpeg?width=420"
-                alt="avatar"
-            />
+        <Link to={`/@${props.nickname}`} className={cx('wrapper')}>
+            <img className={cx('avatar')} src={props.avatar} alt={props.full_name} />
             <div className={cx('info')}>
                 <p className={cx('name')}>
-                    <span>Nguyen Van A</span>
-                    <FontAwesomeIcon className={cx('check')} icon={faCheckCircle} />
+                    <span>{props.full_name}</span>
+                    {props.tick && <FontAwesomeIcon className={cx('check')} icon={faCheckCircle} />}
                 </p>
-                <p className={cx('desc')}>nguyenvanaaaaa</p>
+                <p className={cx('desc')}>{props.nickname}</p>
             </div>
-        </div>
+        </Link>
     );
 }
 

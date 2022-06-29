@@ -68,7 +68,6 @@
 }
 
 .loading {
-    display: none;
     animation: rotating linear 1s infinite;
     transition: ease-in-out 0.3s;
 }
@@ -87,7 +86,8 @@
     background-color: var(--whiteColor);
 }
 .result {
-    display: block;
+    display: flex;
+    align-items: center;
     padding: 9px 16px;
     font-size: 1.5rem;
     font-weight: 700;

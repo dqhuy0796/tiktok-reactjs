@@ -20,11 +20,19 @@
 }
 .info {
     margin-left: 16px;
+    flex: 1;
 }
 .name {
+    width: 100%;
     font-size: 1.5rem;
     font-weight: 700;
     color: var(--blackColor);
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
 }
 .check {
     margin-left: 4px;
@@ -32,7 +40,14 @@
     color: #20d5ec;
 }
 .desc {
+    width: 100%;
     font-size: 1.3rem;
     font-weight: 400;
     color: var(--textColor);
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
 }

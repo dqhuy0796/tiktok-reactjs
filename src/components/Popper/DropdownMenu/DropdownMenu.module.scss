@@ -1,26 +1,38 @@
 .container {
     position: relative;
-    width: 100%;
+    width: 224px;
     background-color: var(--whiteColor);
+    box-shadow: 0 2px 8px 1px var(--borderColor);
+    border-radius: 4px;
 }
-.go-back {
+.back-btn {
     position: absolute;
     left: 0;
-    height: 100%;
+    width: 46px;
+    height: 46px;
+    color: var(--textColor);
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
 }
 .title {
     width: 100%;
+    height: 46px;
     text-align: center;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--blackColor);
+    line-height: 46px;
 }
 .list {
-    padding: 8px 0;
+    padding-bottom: 8px;
     width: 100%;
     list-style: none;
 }
 .item {
     display: flex;
     align-items: center;
-    padding: 10px 16px;
     width: 100%;
     font-size: 1.6rem;
     font-weight: 700;

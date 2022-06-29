@@ -1,5 +1,6 @@
 // import layouts
 import { HeaderOnly } from '../components/Layout';
+import configRoutes from '../config/routes';
 
 // import components
 import Home from '../page/Home';
@@ -10,11 +11,11 @@ import Login from '../page/Login';
 
 // public routes for everyone
 const publicRoutes = [
-    { path: '/', component: Home },
-    { path: '/following', component: Following },
-    { path: '/upload', component: Upload, layout: HeaderOnly },
-    { path: '/profile', component: Profile, layout: null },
-    { path: '/login', component: Login, layout: null },
+    { path: configRoutes.home, component: Home },
+    { path: configRoutes.following, component: Following },
+    { path: configRoutes.upload, component: Upload, layout: HeaderOnly },
+    { path: configRoutes.profile, component: Profile, layout: null },
+    { path: configRoutes.login, component: Login, layout: null },
 ];
 
 // private routes request login

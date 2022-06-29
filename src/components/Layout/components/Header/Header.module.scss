@@ -27,3 +27,25 @@
     font-weight: 700;
     color: var(--textColor);
 }
+.avatar {
+    position: relative;
+    margin-left: 20px;
+    width: 46px;
+    height: 46px;
+    background-color: var(--bg-lightColor);
+    border: 1px solid var(--borderColor);
+    border-radius: 50%;
+    flex-shrink: 0;
+
+    img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    &:hover {
+        cursor: pointer;
+    }
+}
