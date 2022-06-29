@@ -10,7 +10,7 @@ const cx = classNames.bind(styles);
 
 const stupidSolution = () => {};
 
-function DropdownMenu({ children, menuItems = {}, onChange = stupidSolution }) {
+function DropdownMenu({ children, menuItems = {}, hideOnClick = true, onChange = stupidSolution }) {
     // push menu api to an array of object and get the last one to render
     const [prevValue, setPrevValue] = useState([{ data: menuItems }]);
     const currentValue = prevValue[prevValue.length - 1];
@@ -43,9 +43,10 @@ function DropdownMenu({ children, menuItems = {}, onChange = stupidSolution }) {
 
     return (
         <Tippy
-            interactive={true}
+            interactive
             delay={[0, 300]}
             placement="bottom-end"
+            hideOnClick={hideOnClick}
             render={(attrs) => (
                 <div className={cx('container')} tabIndex="-1" {...attrs}>
                     {/* if this target item has prop: children then render this */}

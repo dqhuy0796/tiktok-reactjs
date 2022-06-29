@@ -10,13 +10,16 @@
     font-size: 1.6rem;
     font-weight: 700;
     font-family: 'ProximaNova', sans-serif;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
     background-color: transparent;
     border: 1px solid transparent;
     outline: none;
     gap: 8px;
 
     &:hover {
-        background-color: var(--bg-lightColor);
+        cursor: pointer;
     }
 
     + .wrapper {

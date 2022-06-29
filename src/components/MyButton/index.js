@@ -1,27 +1,31 @@
 import styles from './MyButton.module.scss';
 import classNames from 'classnames/bind';
 import { Link } from 'react-router-dom';
+import { forwardRef } from 'react';
 const cx = classNames.bind(styles);
 
-function MyButton({
-    className,
-    to,
-    href,
-    onClick,
-    children,
-    disabled,
-    text = false,
-    basic = false,
-    primary = false,
-    secondary = false,
-    small = false,
-    medium = false,
-    large = false,
-    textcenter = false,
-    lefticon,
-    righticon,
-    ...props
-}) {
+function MyButton(
+    {
+        className,
+        to,
+        href,
+        onClick,
+        children,
+        disabled,
+        text = false,
+        basic = false,
+        primary = false,
+        secondary = false,
+        small = false,
+        medium = false,
+        large = false,
+        textcenter = false,
+        lefticon,
+        righticon,
+        ...props
+    },
+    ref,
+) {
     const classes = cx('wrapper', {
         [className]: className,
         text,
@@ -60,7 +64,7 @@ function MyButton({
     }
 
     return (
-        <Comp className={classes} {...btnProps}>
+        <Comp ref={ref} className={classes} {...btnProps}>
             {lefticon}
             {children}
             {righticon}
@@ -68,4 +72,4 @@ function MyButton({
     );
 }
 
-export default MyButton;
+export default forwardRef(MyButton);

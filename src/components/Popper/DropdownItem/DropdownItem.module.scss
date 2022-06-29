@@ -1,11 +1,13 @@
 .item {
     display: flex;
     align-items: center;
+    padding: 0 6px;
     width: 100%;
     height: 46px;
     font-size: 1.6rem;
     font-weight: 700;
     color: var(--blackColor);
+    border-radius: 4px;
     &:hover {
         cursor: pointer;
         background-color: var(--bg-lightColor);

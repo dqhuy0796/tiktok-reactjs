@@ -35,7 +35,7 @@ export const MessageIcon = ({ width = '2.6rem', height = '2.6rem', className }) 
 );
 
 // Inbox
-export const InboxIcon = ({ width = '2.8rem', height = '2.8rem', className }) => (
+export const InboxIcon = ({ width = '3.6rem', height = '3.6rem', className }) => (
     <svg
         className={className}
         width={width}

@@ -1,16 +1,19 @@
-import { faCircleNotch, faCircleXmark } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Tippy from '@tippyjs/react';
-import classNames from 'classnames/bind';
+// Global
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import 'tippy.js/dist/tippy.css';
-import { SearchIcon } from '../../../Icons';
-import UserLink from '../../../UserLink';
+import Tippy from '@tippyjs/react';
+import classNames from 'classnames/bind';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCircleNotch, faCircleXmark } from '@fortawesome/free-solid-svg-icons';
+
+// Local
+import { search as searchService } from '~/apiServices/searchService';
+import { SearchIcon } from '~/components/Icons';
+import UserLink from '~/components/UserLink';
+import useDebounce from '~/hook/useDebounce';
 import styles from './SearchMachine.module.scss';
-import useDebounce from '../../../../hook/useDebounce';
-import { search as searchService } from '../../../../apiServices/searchService';
-import axios from 'axios';
+import configRoutes from '~/config/routes';
 
 const cx = classNames.bind(styles);
 
@@ -44,6 +47,13 @@ function SearchMachine() {
         SearchInputRef.current.focus();
     };
 
+    const handleSearchStringChange = (e) => {
+        const searchStringValue = e.target.value;
+        if (!searchStringValue.startsWith(' ')) {
+            setSearchString(searchStringValue);
+        }
+    };
+
     const handleHideSearchResult = () => {
         setIsSearchResultShow(false);
     };
@@ -52,14 +62,14 @@ function SearchMachine() {
         <div>
             <Tippy
                 delay={[0, 300]}
-                interactive={true}
+                interactive
                 placement="bottom"
                 visible={isSearchResultShow && searchResults.length > 0 && searchString.length > 0}
                 render={(attrs) => (
                     <div className={cx('wrapper')} tabIndex="-1" {...attrs}>
                         {searchResults.length > 0 &&
                             searchResults.map((result) => (
-                                <Link key={result.id} to={'./search'} className={cx('result')}>
+                                <Link key={result.id} to={configRoutes.search} className={cx('result')}>
                                     <SearchIcon className={cx('icon')} />
                                     <span>{result.full_name}</span>
                                 </Link>
@@ -71,7 +81,7 @@ function SearchMachine() {
                         {searchResults.length > 0 &&
                             searchResults.map((result) => <UserLink key={result.id} props={result} />)}
 
-                        <Link to={'./search'} className={cx('link-to-search')}>
+                        <Link to={configRoutes.search} className={cx('link-to-search')}>
                             Xem tất cả kết quả dành cho "{searchString}"
                         </Link>
                     </div>
@@ -86,7 +96,7 @@ function SearchMachine() {
                         placeholder="tìm kiếm tài khoản và video"
                         value={searchString}
                         spellCheck={false}
-                        onChange={(e) => setSearchString(e.target.value)}
+                        onChange={handleSearchStringChange}
                         onFocus={() => setIsSearchResultShow(true)}
                     />
                     {!!searchString && !isLoading && (
@@ -99,7 +109,7 @@ function SearchMachine() {
                             <FontAwesomeIcon icon={faCircleNotch} />
                         </div>
                     )}
-                    <button className={cx('search-btn')}>
+                    <button className={cx('search-btn')} onMouseDown={(e) => e.preventDefault()}>
                         <SearchIcon className={cx('icon')} />
                     </button>
                 </div>

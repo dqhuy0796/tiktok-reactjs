@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import classNames from 'classnames/bind';
 import styles from './Header.module.scss';
 
+import React, { useEffect, useState } from 'react';
 import {
     GetCoinIcon,
     HelpIcon,
@@ -13,13 +14,14 @@ import {
     MessageIcon,
     ProfileIcon,
     SettingIcon,
-} from '../../../Icons';
-import { RectLogo } from '../../../Logo';
-import MyButton from '../../../MyButton';
-import DropdownMenu from '../../../Popper/DropdownMenu';
-import SearchMachine from '../SearchMachine';
-import React, { useRef } from 'react';
+} from '~/components/Icons';
+import SearchMachine from '~/components/Layout/components/SearchMachine';
+import { RectLogo } from '~/components/Logo';
+import MyButton from '~/components/MyButton';
+import DropdownMenu from '~/components/Popper/DropdownMenu';
 import Tippy from '@tippyjs/react';
+import { Link } from 'react-router-dom';
+import configRoutes from '~/config/routes';
 
 const cx = classNames.bind(styles);
 
@@ -610,60 +612,69 @@ const handleMenuChange = (item) => {
 function Header() {
     const userLogin = true;
 
-    // const messageBtnRef = useRef();
-    // const inboxBtnRef = useRef();
-    // const uploadBtnRef = useRef();
-    // const loginBtnRef = useRef();
+    const [stickyClass, setStickyClass] = useState('');
+
+    useEffect(() => {
+        window.addEventListener('scroll', stickNavbar);
+
+        return () => {
+            window.removeEventListener('scroll', stickNavbar);
+        };
+    }, []);
+
+    const stickNavbar = () => {
+        if (window !== undefined) {
+            let windowHeight = window.scrollY;
+            windowHeight > 200 ? setStickyClass('sticky') : setStickyClass('');
+        }
+    };
 
     return (
-        <header className={cx('wrapper')}>
+        <header className={cx('wrapper', stickyClass)}>
             <div className={cx('inner')}>
-                <div className={cx('logo')}>
+                <Link to={configRoutes.home} className={cx('logo')}>
                     <RectLogo />
-                </div>
+                </Link>
 
                 <SearchMachine />
 
                 <div className={cx('action')}>
-                    <MyButton
-                        text
-                        basic
-                        textcenter
-                        // ref={uploadBtnRef}
-                        to="./upload"
-                        lefticon={<FontAwesomeIcon icon={faPlus} />}
-                    >
+                    <MyButton text basic textcenter to="./upload" lefticon={<FontAwesomeIcon icon={faPlus} />}>
                         <span>Tải lên</span>
                     </MyButton>
 
                     {userLogin ? (
                         <React.Fragment>
-                            <MyButton className={cx('message-btn')}>
-                                <MessageIcon />
-                            </MyButton>
-
-                            <MyButton className={cx('inbox-btn')}>
-                                <InboxIcon />
-                            </MyButton>
+                            <Tippy content="Tin nhắn">
+                                <MyButton className={cx('message-btn')}>
+                                    <MessageIcon />
+                                </MyButton>
+                            </Tippy>
+                            <Tippy content="Hộp thư">
+                                <MyButton className={cx('inbox-btn')}>
+                                    <InboxIcon />
+                                </MyButton>
+                            </Tippy>
                         </React.Fragment>
                     ) : (
                         <React.Fragment>
-                            <MyButton
-                                text
-                                primary
-                                textcenter
-                                // ref={loginBtnRef}
-                                to="./login"
-                            >
+                            <MyButton text primary textcenter to="./login">
                                 <span>Đăng nhập</span>
                             </MyButton>
                         </React.Fragment>
                     )}
 
-                    <DropdownMenu menuItems={userLogin ? USER_ITEMS : MENU_ITEMS} onChange={handleMenuChange}>
+                    <DropdownMenu
+                        menuItems={userLogin ? USER_ITEMS : MENU_ITEMS}
+                        hideOnClick={false}
+                        onChange={handleMenuChange}
+                    >
                         {userLogin ? (
                             <div className={cx('avatar')}>
-                                <img src="src/assets/images/square-logo.png" alt="username" />
+                                <img
+                                    src="https://kenh14cdn.com/203336854389633024/2022/2/15/photo-1-1644913672104135921901.jpg"
+                                    alt="username"
+                                />
                             </div>
                         ) : (
                             <div className={cx('option')}>

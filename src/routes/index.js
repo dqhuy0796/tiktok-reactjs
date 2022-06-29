@@ -1,13 +1,13 @@
 // import layouts
-import { HeaderOnly } from '../components/Layout';
-import configRoutes from '../config/routes';
+import { HeaderOnly } from '~/components/Layout';
+import configRoutes from '~/config/routes';
 
 // import components
-import Home from '../page/Home';
-import Following from '../page/Following';
-import Upload from '../page/Upload';
-import Profile from '../page/Profile';
-import Login from '../page/Login';
+import Home from '~/page/Home';
+import Following from '~/page/Following';
+import Upload from '~/page/Upload';
+import Profile from '~/page/Profile';
+import Login from '~/page/Login';
 
 // public routes for everyone
 const publicRoutes = [
