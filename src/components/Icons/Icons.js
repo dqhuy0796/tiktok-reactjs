@@ -77,7 +77,7 @@ export const FollowingIcon = ({ width = '2.6rem', height = '2.6rem', className }
         width={width}
         height={height}
         viewBox="0 0 48 48"
-        fill="rgba(22, 24, 35, 1.0)"
+        fill="currentColor"
         xmlns="http://www.w3.org/2000/svg"
     >
         <path

@@ -66,6 +66,7 @@ html *::-webkit-scrollbar-track {
     font-weight: 400;
 }
 
+// placeholder
 ::placeholder {
     font-size: 1.6rem;
     font-weight: 400;
@@ -85,7 +86,9 @@ html *::-webkit-scrollbar-track {
     color: var(--textSecondaryColor);
 }
 
+ul {
+    list-style: none;
+}
 a[href] {
     text-decoration: none;
-    color: var(--textColor);
 }
