@@ -15,13 +15,13 @@ import {
     ProfileIcon,
     SettingIcon,
 } from '~/components/Icons';
-import SearchMachine from '~/components/Layout/components/SearchMachine';
+import SearchMachine from '~/layouts/components/SearchMachine';
 import { RectLogo } from '~/components/Logo';
 import MyButton from '~/components/MyButton';
 import DropdownMenu from '~/components/Popper/DropdownMenu';
 import Tippy from '@tippyjs/react';
 import { Link } from 'react-router-dom';
-import configRoutes from '~/config/routes';
+import config from '~/config';
 
 const cx = classNames.bind(styles);
 
@@ -632,7 +632,7 @@ function Header() {
     return (
         <header className={cx('wrapper', stickyClass)}>
             <div className={cx('inner')}>
-                <Link to={configRoutes.home} className={cx('logo')}>
+                <Link to={config.routes.home} className={cx('logo')}>
                     <RectLogo />
                 </Link>
 
@@ -644,7 +644,7 @@ function Header() {
                     </MyButton>
 
                     {userLogin ? (
-                        <React.Fragment>
+                        <>
                             <Tippy content="Tin nhắn">
                                 <MyButton className={cx('message-btn')}>
                                     <MessageIcon />
@@ -655,13 +655,13 @@ function Header() {
                                     <InboxIcon />
                                 </MyButton>
                             </Tippy>
-                        </React.Fragment>
+                        </>
                     ) : (
-                        <React.Fragment>
+                        <>
                             <MyButton text primary textcenter to="./login">
                                 <span>Đăng nhập</span>
                             </MyButton>
-                        </React.Fragment>
+                        </>
                     )}
 
                     <DropdownMenu

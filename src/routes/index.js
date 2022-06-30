@@ -1,21 +1,23 @@
 // import layouts
-import { HeaderOnly } from '~/components/Layout';
-import configRoutes from '~/config/routes';
+import { HeaderOnly } from '~/layouts';
+import config from '~/config';
 
 // import components
-import Home from '~/page/Home';
-import Following from '~/page/Following';
-import Upload from '~/page/Upload';
-import Profile from '~/page/Profile';
-import Login from '~/page/Login';
+import Home from '~/pages/Home';
+import Following from '~/pages/Following';
+import Upload from '~/pages/Upload';
+import Profile from '~/pages/Profile';
+import Login from '~/pages/Login';
+import Search from '~/pages/Search';
 
 // public routes for everyone
 const publicRoutes = [
-    { path: configRoutes.home, component: Home },
-    { path: configRoutes.following, component: Following },
-    { path: configRoutes.upload, component: Upload, layout: HeaderOnly },
-    { path: configRoutes.profile, component: Profile, layout: null },
-    { path: configRoutes.login, component: Login, layout: null },
+    { path: config.routes.home, component: Home },
+    { path: config.routes.following, component: Following },
+    { path: config.routes.upload, component: Upload, layout: HeaderOnly },
+    { path: config.routes.profile, component: Profile, layout: null },
+    { path: config.routes.login, component: Login, layout: null },
+    { path: config.routes.search, component: Search, layout: null },
 ];
 
 // private routes request login

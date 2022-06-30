@@ -1,8 +1,9 @@
 import axios from 'axios';
+//cannot process .env file
+console.log(process.env);
 
 const request = axios.create({
     baseURL: 'https://tiktok.fullstack.edu.vn/api/',
-    timeout: 1000,
 });
 
 export const getApiData = async (path, options = {}) => {

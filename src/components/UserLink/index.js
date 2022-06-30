@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import classNames from 'classnames/bind';
 import { Link } from 'react-router-dom';
 import styles from './UserLink.module.scss';
+import PropTypes from 'prop-types';
 
 const cx = classNames.bind(styles);
 
@@ -20,5 +21,7 @@ function UserLink({ props }) {
         </Link>
     );
 }
-
+UserLink.propTypes = {
+    props: PropTypes.object,
+};
 export default UserLink;

@@ -8,12 +8,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleNotch, faCircleXmark } from '@fortawesome/free-solid-svg-icons';
 
 // Local
-import { search as searchService } from '~/apiServices/searchService';
+import { search as searchService } from '~/services/searchService';
 import { SearchIcon } from '~/components/Icons';
 import UserLink from '~/components/UserLink';
 import useDebounce from '~/hook/useDebounce';
 import styles from './SearchMachine.module.scss';
-import configRoutes from '~/config/routes';
+import config from '~/config';
 
 const cx = classNames.bind(styles);
 
@@ -27,18 +27,17 @@ function SearchMachine() {
 
     const searchDebounced = useDebounce(searchString, 600);
 
-    const fetchApi = async () => {
-        setIsLoading(true);
-        const result = await searchService(searchDebounced);
-        setSearchResults(result);
-        setIsLoading(false);
-    };
-
     useEffect(() => {
         if (!searchDebounced.trim()) {
             setSearchResults([]);
             return;
         }
+        const fetchApi = async () => {
+            setIsLoading(true);
+            const result = await searchService(searchDebounced);
+            setSearchResults(result);
+            setIsLoading(false);
+        };
         fetchApi();
     }, [searchDebounced]);
 
@@ -69,19 +68,24 @@ function SearchMachine() {
                     <div className={cx('wrapper')} tabIndex="-1" {...attrs}>
                         {searchResults.length > 0 &&
                             searchResults.map((result) => (
-                                <Link key={result.id} to={configRoutes.search} className={cx('result')}>
+                                <Link key={result.id} to={config.routes.search} className={cx('result')}>
                                     <SearchIcon className={cx('icon')} />
                                     <span>{result.full_name}</span>
                                 </Link>
                             ))}
 
                         {/* acount container */}
-                        <h4 className={cx('subtitle')}>Tài khoản</h4>
 
-                        {searchResults.length > 0 &&
-                            searchResults.map((result) => <UserLink key={result.id} props={result} />)}
+                        {searchResults.length > 0 && (
+                            <>
+                                <h4 className={cx('subtitle')}>Tài khoản</h4>
+                                {searchResults.map((result) => (
+                                    <UserLink key={result.id} props={result} />
+                                ))}
+                            </>
+                        )}
 
-                        <Link to={configRoutes.search} className={cx('link-to-search')}>
+                        <Link to={config.routes.search} className={cx('link-to-search')}>
                             Xem tất cả kết quả dành cho "{searchString}"
                         </Link>
                     </div>

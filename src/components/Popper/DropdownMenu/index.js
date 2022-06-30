@@ -41,6 +41,11 @@ function DropdownMenu({ children, menuItems = {}, hideOnClick = true, onChange =
         });
     };
 
+    const handleReset = () => {
+        setSubmenuTitle((prev) => prev.slice(0, 1));
+        setPrevValue((prev) => prev.slice(0, 1));
+    };
+
     return (
         <Tippy
             interactive
@@ -51,7 +56,7 @@ function DropdownMenu({ children, menuItems = {}, hideOnClick = true, onChange =
                 <div className={cx('container')} tabIndex="-1" {...attrs}>
                     {/* if this target item has prop: children then render this */}
                     {prevValue.length > 1 && (
-                        <React.Fragment>
+                        <>
                             <button
                                 className={cx('back-btn')}
                                 onClick={() => {
@@ -62,16 +67,13 @@ function DropdownMenu({ children, menuItems = {}, hideOnClick = true, onChange =
                                 <FontAwesomeIcon icon={faChevronLeft} />
                             </button>
                             <h2 className={cx('title')}>{currentTitle}</h2>
-                        </React.Fragment>
+                        </>
                     )}
                     {/* render items in same level */}
                     <ul className={cx('list')}>{renderItems()}</ul>
                 </div>
             )}
-            onHide={() => {
-                setSubmenuTitle((prev) => prev.slice(0, 1));
-                setPrevValue((prev) => prev.slice(0, 1));
-            }}
+            onHide={handleReset}
         >
             {children}
         </Tippy>
